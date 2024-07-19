@@ -1,0 +1,127 @@
+def @main(%input_1: Tensor[(1, 32, 32, 3), float32] /* ty=Tensor[(1, 32, 32, 3), float32] span=Transpose_1.input_1:0:0 */) -> Tensor[(1, 10), float32] {
+  %0 = qnn.quantize(%input_1, 4f /* ty=float32 span=QuantizeLinear_1.model/activation/Relu;model/batch_normalization/FusedBatchNormV3;model/conv2d/BiasAdd/ReadVariableOp/resource;model/conv2d/BiasAdd;model/conv2d_2/Conv2D;model/conv2d/Conv2D1__31:0_scale:0:0 */, 0 /* ty=int32 span=QuantizeLinear_1:0:0 */, out_dtype="int8", axis=3) /* ty=Tensor[(1, 32, 32, 3), int8] */;
+  %1 = @tvmgen_default_esp_main_0(%0, meta[relay.Constant][0] /* ty=Tensor[(16, 3, 3, 3), int8] */, meta[relay.Constant][1] /* ty=Tensor[(1, 1, 1, 16), int8] */) /* ty=Tensor[(1, 32, 32, 16), int8] */;
+  %2 = @tvmgen_default_esp_main_1(%1, meta[relay.Constant][2] /* ty=Tensor[(16, 3, 3, 16), int8] */, meta[relay.Constant][3] /* ty=Tensor[(1, 1, 1, 16), int8] */) /* ty=Tensor[(1, 32, 32, 16), int8] */;
+  %3 = @tvmgen_default_esp_main_2(%2, meta[relay.Constant][4] /* ty=Tensor[(16, 3, 3, 16), int8] */, meta[relay.Constant][5] /* ty=Tensor[(1, 1, 1, 16), int8] */) /* ty=Tensor[(1, 32, 32, 16), int8] */;
+  %4 = qnn.dequantize(%1, 0.125f /* ty=float32 span=QLinearAdd_1:0:0 */, 0 /* ty=int32 span=QLinearAdd_1:0:0 */, out_dtype="float32", axis=2) /* ty=Tensor[(1, 32, 32, 16), float32] span=QLinearAdd_1:0:0 */;
+  %5 = qnn.dequantize(%3, 0.125f /* ty=float32 span=QLinearAdd_1:0:0 */, 0 /* ty=int32 span=QLinearAdd_1:0:0 */, out_dtype="float32", axis=2) /* ty=Tensor[(1, 32, 32, 16), float32] span=QLinearAdd_1:0:0 */;
+  %6 = add(%4, %5) /* ty=Tensor[(1, 32, 32, 16), float32] span=QLinearAdd_1:0:0 */;
+  %7 = qnn.quantize(%6, 0.125f /* ty=float32 span=QLinearAdd_1:0:0 */, 0 /* ty=int32 span=QLinearAdd_1:0:0 */, out_dtype="int8", axis=2) /* ty=Tensor[(1, 32, 32, 16), int8] span=QLinearAdd_1:0:0 */;
+  %8 = nn.relu(%7) /* ty=Tensor[(1, 32, 32, 16), int8] span=Relu_3:0:0 */;
+  %9 = @tvmgen_default_esp_main_3(%8, meta[relay.Constant][6] /* ty=Tensor[(32, 1, 1, 16), int8] */, meta[relay.Constant][7] /* ty=Tensor[(1, 1, 1, 32), int8] */) /* ty=Tensor[(1, 16, 16, 32), int8] */;
+  %10 = @tvmgen_default_esp_main_4(%8, meta[relay.Constant][8] /* ty=Tensor[(32, 3, 3, 16), int8] */, meta[relay.Constant][9] /* ty=Tensor[(1, 1, 1, 32), int8] */) /* ty=Tensor[(1, 16, 16, 32), int8] */;
+  %11 = @tvmgen_default_esp_main_5(%10, meta[relay.Constant][10] /* ty=Tensor[(32, 3, 3, 32), int8] */, meta[relay.Constant][11] /* ty=Tensor[(1, 1, 1, 32), int8] */) /* ty=Tensor[(1, 16, 16, 32), int8] */;
+  %12 = qnn.dequantize(%9, 0.0625f /* ty=float32 span=QLinearAdd_2:0:0 */, 0 /* ty=int32 span=QLinearAdd_2:0:0 */, out_dtype="float32", axis=2) /* ty=Tensor[(1, 16, 16, 32), float32] span=QLinearAdd_2:0:0 */;
+  %13 = qnn.dequantize(%11, 0.125f /* ty=float32 span=QLinearAdd_2:0:0 */, 0 /* ty=int32 span=QLinearAdd_2:0:0 */, out_dtype="float32", axis=2) /* ty=Tensor[(1, 16, 16, 32), float32] span=QLinearAdd_2:0:0 */;
+  %14 = add(%12, %13) /* ty=Tensor[(1, 16, 16, 32), float32] span=QLinearAdd_2:0:0 */;
+  %15 = qnn.quantize(%14, 0.25f /* ty=float32 span=QLinearAdd_2:0:0 */, 0 /* ty=int32 span=QLinearAdd_2:0:0 */, out_dtype="int8", axis=2) /* ty=Tensor[(1, 16, 16, 32), int8] span=QLinearAdd_2:0:0 */;
+  %16 = qnn.dequantize(%15, 0.25f /* ty=float32 span=QLinearAdd_2.model/activation_4/Relu;model/add_1/add_scale:0:0 */, 0 /* ty=int32 span=DequantizeLinear_5:0:0 */, out_dtype="float32", axis=3) /* ty=Tensor[(1, 16, 16, 32), float32] span=DequantizeLinear_5:0:0 */;
+  %17 = nn.relu(%16) /* ty=Tensor[(1, 16, 16, 32), float32] span=Relu_5:0:0 */;
+  %18 = qnn.quantize(%17, 0.125f /* ty=float32 span=QuantizeLinear_6.Relu__19:0_scale:0:0 */, 0 /* ty=int32 span=QuantizeLinear_6:0:0 */, out_dtype="int8", axis=3) /* ty=Tensor[(1, 16, 16, 32), int8] span=QuantizeLinear_6:0:0 */;
+  %19 = @tvmgen_default_esp_main_6(%18, meta[relay.Constant][12] /* ty=Tensor[(64, 1, 1, 32), int8] */, meta[relay.Constant][13] /* ty=Tensor[(1, 1, 1, 64), int8] */) /* ty=Tensor[(1, 8, 8, 64), int8] */;
+  %20 = @tvmgen_default_esp_main_7(%18, meta[relay.Constant][14] /* ty=Tensor[(64, 3, 3, 32), int8] */, meta[relay.Constant][15] /* ty=Tensor[(1, 1, 1, 64), int8] */) /* ty=Tensor[(1, 8, 8, 64), int8] */;
+  %21 = qnn.dequantize(%20, 0.125f /* ty=float32 span=QLinearConv_7.model/activation_5/Relu;model/batch_normalization_5/FusedBatchNormV3;model/conv2d_6/BiasAdd/ReadVariableOp/resource;model/conv2d_6/BiasAdd;model/conv2d_8/Conv2D;model/conv2d_6/Conv2D1_scale:0:0 */, 0 /* ty=int32 span=DequantizeLinear_6:0:0 */, out_dtype="float32", axis=3) /* ty=Tensor[(1, 8, 8, 64), float32] span=DequantizeLinear_6:0:0 */;
+  %22 = nn.relu(%21) /* ty=Tensor[(1, 8, 8, 64), float32] span=Relu_6:0:0 */;
+  %23 = qnn.quantize(%22, 0.0625f /* ty=float32 span=QuantizeLinear_7.Relu__21:0_scale:0:0 */, 0 /* ty=int32 span=QuantizeLinear_7:0:0 */, out_dtype="int8", axis=3) /* ty=Tensor[(1, 8, 8, 64), int8] span=QuantizeLinear_7:0:0 */;
+  %24 = @tvmgen_default_esp_main_8(%23, meta[relay.Constant][16] /* ty=Tensor[(64, 3, 3, 64), int8] */, meta[relay.Constant][17] /* ty=Tensor[(1, 1, 1, 64), int8] */) /* ty=Tensor[(1, 8, 8, 64), int8] */;
+  %25 = qnn.dequantize(%19, 0.125f /* ty=float32 span=QLinearAdd_3:0:0 */, 0 /* ty=int32 span=QLinearAdd_3:0:0 */, out_dtype="float32", axis=2) /* ty=Tensor[(1, 8, 8, 64), float32] span=QLinearAdd_3:0:0 */;
+  %26 = qnn.dequantize(%24, 0.25f /* ty=float32 span=QLinearAdd_3:0:0 */, 0 /* ty=int32 span=QLinearAdd_3:0:0 */, out_dtype="float32", axis=2) /* ty=Tensor[(1, 8, 8, 64), float32] span=QLinearAdd_3:0:0 */;
+  %27 = add(%25, %26) /* ty=Tensor[(1, 8, 8, 64), float32] span=QLinearAdd_3:0:0 */;
+  %28 = qnn.quantize(%27, 0.5f /* ty=float32 span=QLinearAdd_3:0:0 */, 0 /* ty=int32 span=QLinearAdd_3:0:0 */, out_dtype="int8", axis=2) /* ty=Tensor[(1, 8, 8, 64), int8] span=QLinearAdd_3:0:0 */;
+  %29 = nn.relu(%28) /* ty=Tensor[(1, 8, 8, 64), int8] span=Relu_7:0:0 */;
+  %30 = qnn.dequantize(%29, 0.5f /* ty=float32 span=QLinearAveragePool_1:0:0 */, 0 /* ty=int32 span=QLinearAveragePool_1:0:0 */, out_dtype="float32", axis=2) /* ty=Tensor[(1, 8, 8, 64), float32] span=QLinearAveragePool_1:0:0 */;
+  %31 = nn.avg_pool2d(%30, pool_size=[8, 8], strides=[8, 8], padding=[0, 0, 0, 0], layout="NHWC", out_layout="NHWC") /* ty=Tensor[(1, 1, 1, 64), float32] span=QLinearAveragePool_1:0:0 */;
+  %32 = qnn.quantize(%31, 0.0625f /* ty=float32 span=QLinearAveragePool_1:0:0 */, 0 /* ty=int32 span=QLinearAveragePool_1:0:0 */, out_dtype="int8", axis=2) /* ty=Tensor[(1, 1, 1, 64), int8] span=QLinearAveragePool_1:0:0 */;
+  %33 = layout_transform(%32, src_layout="NHWC", dst_layout="NCHW") /* ty=Tensor[(1, 64, 1, 1), int8] */;
+  %34 = reshape(%33, newshape=[-1, 64]) /* ty=Tensor[(1, 64), int8] span=Reshape_1:0:0 */;
+  %35 = qnn.dense(%34, meta[relay.Constant][18] /* ty=Tensor[(10, 64), int8] span=QGemm_1:0:0 */, 0 /* ty=int32 span=QGemm_1:0:0 */, 0 /* ty=int32 span=QGemm_1:0:0 */, 0.0625f /* ty=float32 span=QGemm_1:0:0 */, 0.03125f /* ty=float32 span=QGemm_1:0:0 */, units=10, out_dtype="int32") /* ty=Tensor[(1, 10), int32] span=QGemm_1:0:0 */;
+  %36 = add(%35, meta[relay.Constant][19] /* ty=Tensor[(1, 10), int32] */) /* ty=Tensor[(1, 10), int32] span=QGemm_1:0:0 */;
+  %37 = qnn.requantize(%36, 0.00195312f /* ty=float32 span=QGemm_1:0:0 */, 0 /* ty=int32 span=QGemm_1:0:0 */, 0.25f /* ty=float32 span=QGemm_1.Add__29:0_scale:0:0 */, 0 /* ty=int32 span=QGemm_1:0:0 */, axis=1, rounding="TONEAREST", compute_dtype="int64", out_dtype="int8") /* ty=Tensor[(1, 10), int8] span=QGemm_1:0:0 */;
+  %38 = qnn.dequantize(%37, 0.25f /* ty=float32 span=QGemm_1.Add__29:0_scale:0:0 */, 0 /* ty=int32 span=DequantizeLinear_8:0:0 */, out_dtype="float32", axis=1) /* ty=Tensor[(1, 10), float32] span=DequantizeLinear_8:0:0 */;
+  nn.softmax(%38, axis=1) /* ty=Tensor[(1, 10), float32] span=Softmax_1:0:0 */
+}
+
+def @tvmgen_default_esp_main_0(%esp_0_i0: Tensor[(1, 32, 32, 3), int8] /* ty=Tensor[(1, 32, 32, 3), int8] */, %esp_func_var_0: Tensor[(16, 3, 3, 3), int8] /* ty=Tensor[(16, 3, 3, 3), int8] */, %esp_func_var_1: Tensor[(1, 1, 1, 16), int8] /* ty=Tensor[(1, 1, 1, 16), int8] */, Compiler="esp", Primitive=1, Inline=1, global_symbol="tvmgen_default_esp_main_0") -> Tensor[(1, 32, 32, 16), int8] {
+  %42 = fn (%FunctionVar_8_0: Tensor[(1, 32, 32, 3), int8] /* ty=Tensor[(1, 32, 32, 3), int8] */, %tvm_var_extract_const_0: Tensor[(16, 3, 3, 3), int8] /* ty=Tensor[(16, 3, 3, 3), int8] */, %tvm_var_extract_const_1: Tensor[(1, 1, 1, 16), int8] /* ty=Tensor[(1, 1, 1, 16), int8] */, PartitionedFromPattern="qnn.conv2d_qnn.requantize_add_nn.relu_", Composite="esp.qnn_conv2d_onnx") -> Tensor[(1, 32, 32, 16), int8] {
+    %39 = qnn.conv2d(%FunctionVar_8_0, %tvm_var_extract_const_0, 0 /* ty=int32 span=QLinearConv_1:0:0 */, 0 /* ty=int32 span=QLinearConv_1:0:0 */, 2f /* ty=float32 */, -12f /* ty=float32 */, padding=[1, 1, 1, 1], channels=16, kernel_size=[3, 3], data_layout="NHWC", kernel_layout="OHWI", out_dtype="int32") /* ty=Tensor[(1, 32, 32, 16), int32] */;
+    %40 = qnn.requantize(%39, 0.000976562f /* ty=float32 span=QLinearConv_1:0:0 */, 0 /* ty=int32 span=QLinearConv_1:0:0 */, -3f /* ty=float32 */, 0 /* ty=int32 span=QLinearConv_1:0:0 */, axis=3, out_dtype="int8") /* ty=Tensor[(1, 32, 32, 16), int8] */;
+    %41 = add(%40, %tvm_var_extract_const_1) /* ty=Tensor[(1, 32, 32, 16), int8] */;
+    nn.relu(%41) /* ty=Tensor[(1, 32, 32, 16), int8] */
+  } /* ty=fn (Tensor[(1, 32, 32, 3), int8], Tensor[(16, 3, 3, 3), int8], Tensor[(1, 1, 1, 16), int8]) -> Tensor[(1, 32, 32, 16), int8] */;
+  %42(%esp_0_i0, %esp_func_var_0, %esp_func_var_1) /* ty=Tensor[(1, 32, 32, 16), int8] */
+}
+
+def @tvmgen_default_esp_main_1(%esp_1_i0: Tensor[(1, 32, 32, 16), int8] /* ty=Tensor[(1, 32, 32, 16), int8] */, %esp_func_var_2: Tensor[(16, 3, 3, 16), int8] /* ty=Tensor[(16, 3, 3, 16), int8] */, %esp_func_var_3: Tensor[(1, 1, 1, 16), int8] /* ty=Tensor[(1, 1, 1, 16), int8] */, Compiler="esp", Primitive=1, Inline=1, global_symbol="tvmgen_default_esp_main_1") -> Tensor[(1, 32, 32, 16), int8] {
+  %46 = fn (%FunctionVar_7_0: Tensor[(1, 32, 32, 16), int8] /* ty=Tensor[(1, 32, 32, 16), int8] */, %tvm_var_extract_const_2: Tensor[(16, 3, 3, 16), int8] /* ty=Tensor[(16, 3, 3, 16), int8] */, %tvm_var_extract_const_3: Tensor[(1, 1, 1, 16), int8] /* ty=Tensor[(1, 1, 1, 16), int8] */, PartitionedFromPattern="qnn.conv2d_qnn.requantize_add_nn.relu_", Composite="esp.qnn_conv2d_onnx") -> Tensor[(1, 32, 32, 16), int8] {
+    %43 = qnn.conv2d(%FunctionVar_7_0, %tvm_var_extract_const_2, 0 /* ty=int32 span=QLinearConv_2:0:0 */, 0 /* ty=int32 span=QLinearConv_2:0:0 */, -3f /* ty=float32 */, -7f /* ty=float32 */, padding=[1, 1, 1, 1], channels=16, kernel_size=[3, 3], data_layout="NHWC", kernel_layout="OHWI", out_dtype="int32") /* ty=Tensor[(1, 32, 32, 16), int32] */;
+    %44 = qnn.requantize(%43, 0.000976562f /* ty=float32 span=QLinearConv_2:0:0 */, 0 /* ty=int32 span=QLinearConv_2:0:0 */, -2f /* ty=float32 */, 0 /* ty=int32 span=QLinearConv_2:0:0 */, axis=3, out_dtype="int8") /* ty=Tensor[(1, 32, 32, 16), int8] */;
+    %45 = add(%44, %tvm_var_extract_const_3) /* ty=Tensor[(1, 32, 32, 16), int8] */;
+    nn.relu(%45) /* ty=Tensor[(1, 32, 32, 16), int8] */
+  } /* ty=fn (Tensor[(1, 32, 32, 16), int8], Tensor[(16, 3, 3, 16), int8], Tensor[(1, 1, 1, 16), int8]) -> Tensor[(1, 32, 32, 16), int8] */;
+  %46(%esp_1_i0, %esp_func_var_2, %esp_func_var_3) /* ty=Tensor[(1, 32, 32, 16), int8] */
+}
+
+def @tvmgen_default_esp_main_2(%esp_2_i0: Tensor[(1, 32, 32, 16), int8] /* ty=Tensor[(1, 32, 32, 16), int8] */, %esp_func_var_4: Tensor[(16, 3, 3, 16), int8] /* ty=Tensor[(16, 3, 3, 16), int8] */, %esp_func_var_5: Tensor[(1, 1, 1, 16), int8] /* ty=Tensor[(1, 1, 1, 16), int8] */, Compiler="esp", Primitive=1, Inline=1, global_symbol="tvmgen_default_esp_main_2") -> Tensor[(1, 32, 32, 16), int8] {
+  %49 = fn (%FunctionVar_6_0: Tensor[(1, 32, 32, 16), int8] /* ty=Tensor[(1, 32, 32, 16), int8] */, %tvm_var_extract_const_4: Tensor[(16, 3, 3, 16), int8] /* ty=Tensor[(16, 3, 3, 16), int8] */, %tvm_var_extract_const_5: Tensor[(1, 1, 1, 16), int8] /* ty=Tensor[(1, 1, 1, 16), int8] */, PartitionedFromPattern="qnn.conv2d_qnn.requantize_add_", Composite="esp.qnn_conv2d_onnx") -> Tensor[(1, 32, 32, 16), int8] {
+    %47 = qnn.conv2d(%FunctionVar_6_0, %tvm_var_extract_const_4, 0 /* ty=int32 span=QLinearConv_3:0:0 */, 0 /* ty=int32 span=QLinearConv_3:0:0 */, -2f /* ty=float32 */, -7f /* ty=float32 */, padding=[1, 1, 1, 1], channels=16, kernel_size=[3, 3], data_layout="NHWC", kernel_layout="OHWI", out_dtype="int32") /* ty=Tensor[(1, 32, 32, 16), int32] */;
+    %48 = qnn.requantize(%47, 0.00195312f /* ty=float32 span=QLinearConv_3:0:0 */, 0 /* ty=int32 span=QLinearConv_3:0:0 */, -3f /* ty=float32 */, 0 /* ty=int32 span=QLinearConv_3:0:0 */, axis=3, out_dtype="int8") /* ty=Tensor[(1, 32, 32, 16), int8] */;
+    add(%48, %tvm_var_extract_const_5) /* ty=Tensor[(1, 32, 32, 16), int8] */
+  } /* ty=fn (Tensor[(1, 32, 32, 16), int8], Tensor[(16, 3, 3, 16), int8], Tensor[(1, 1, 1, 16), int8]) -> Tensor[(1, 32, 32, 16), int8] */;
+  %49(%esp_2_i0, %esp_func_var_4, %esp_func_var_5) /* ty=Tensor[(1, 32, 32, 16), int8] */
+}
+
+def @tvmgen_default_esp_main_3(%esp_3_i0: Tensor[(1, 32, 32, 16), int8] /* ty=Tensor[(1, 32, 32, 16), int8] */, %esp_func_var_6: Tensor[(32, 1, 1, 16), int8] /* ty=Tensor[(32, 1, 1, 16), int8] */, %esp_func_var_7: Tensor[(1, 1, 1, 32), int8] /* ty=Tensor[(1, 1, 1, 32), int8] */, Compiler="esp", Primitive=1, Inline=1, global_symbol="tvmgen_default_esp_main_3") -> Tensor[(1, 16, 16, 32), int8] {
+  %52 = fn (%FunctionVar_5_0: Tensor[(1, 32, 32, 16), int8] /* ty=Tensor[(1, 32, 32, 16), int8] */, %tvm_var_extract_const_6: Tensor[(32, 1, 1, 16), int8] /* ty=Tensor[(32, 1, 1, 16), int8] */, %tvm_var_extract_const_7: Tensor[(1, 1, 1, 32), int8] /* ty=Tensor[(1, 1, 1, 32), int8] */, PartitionedFromPattern="qnn.conv2d_qnn.requantize_add_", Composite="esp.qnn_conv2d_onnx") -> Tensor[(1, 16, 16, 32), int8] {
+    %50 = qnn.conv2d(%FunctionVar_5_0, %tvm_var_extract_const_6, 0 /* ty=int32 span=QLinearConv_6:0:0 */, 0 /* ty=int32 span=QLinearConv_6:0:0 */, -3f /* ty=float32 */, -7f /* ty=float32 */, strides=[2, 2], padding=[0, 0, 0, 0], channels=32, kernel_size=[1, 1], data_layout="NHWC", kernel_layout="OHWI", out_dtype="int32") /* ty=Tensor[(1, 16, 16, 32), int32] */;
+    %51 = qnn.requantize(%50, 0.000976562f /* ty=float32 span=QLinearConv_6:0:0 */, 0 /* ty=int32 span=QLinearConv_6:0:0 */, -4f /* ty=float32 */, 0 /* ty=int32 span=QLinearConv_6:0:0 */, axis=3, out_dtype="int8") /* ty=Tensor[(1, 16, 16, 32), int8] */;
+    add(%51, %tvm_var_extract_const_7) /* ty=Tensor[(1, 16, 16, 32), int8] */
+  } /* ty=fn (Tensor[(1, 32, 32, 16), int8], Tensor[(32, 1, 1, 16), int8], Tensor[(1, 1, 1, 32), int8]) -> Tensor[(1, 16, 16, 32), int8] */;
+  %52(%esp_3_i0, %esp_func_var_6, %esp_func_var_7) /* ty=Tensor[(1, 16, 16, 32), int8] */
+}
+
+def @tvmgen_default_esp_main_4(%esp_4_i0: Tensor[(1, 32, 32, 16), int8] /* ty=Tensor[(1, 32, 32, 16), int8] */, %esp_func_var_8: Tensor[(32, 3, 3, 16), int8] /* ty=Tensor[(32, 3, 3, 16), int8] */, %esp_func_var_9: Tensor[(1, 1, 1, 32), int8] /* ty=Tensor[(1, 1, 1, 32), int8] */, Compiler="esp", Primitive=1, Inline=1, global_symbol="tvmgen_default_esp_main_4") -> Tensor[(1, 16, 16, 32), int8] {
+  %56 = fn (%FunctionVar_4_0: Tensor[(1, 32, 32, 16), int8] /* ty=Tensor[(1, 32, 32, 16), int8] */, %tvm_var_extract_const_8: Tensor[(32, 3, 3, 16), int8] /* ty=Tensor[(32, 3, 3, 16), int8] */, %tvm_var_extract_const_9: Tensor[(1, 1, 1, 32), int8] /* ty=Tensor[(1, 1, 1, 32), int8] */, PartitionedFromPattern="qnn.conv2d_qnn.requantize_add_nn.relu_", Composite="esp.qnn_conv2d_onnx") -> Tensor[(1, 16, 16, 32), int8] {
+    %53 = qnn.conv2d(%FunctionVar_4_0, %tvm_var_extract_const_8, 0 /* ty=int32 span=QLinearConv_4:0:0 */, 0 /* ty=int32 span=QLinearConv_4:0:0 */, -3f /* ty=float32 */, -8f /* ty=float32 */, strides=[2, 2], padding=[0, 0, 1, 1], channels=32, kernel_size=[3, 3], data_layout="NHWC", kernel_layout="OHWI", out_dtype="int32") /* ty=Tensor[(1, 16, 16, 32), int32] */;
+    %54 = qnn.requantize(%53, 0.000488281f /* ty=float32 span=QLinearConv_4:0:0 */, 0 /* ty=int32 span=QLinearConv_4:0:0 */, -3f /* ty=float32 */, 0 /* ty=int32 span=QLinearConv_4:0:0 */, axis=3, out_dtype="int8") /* ty=Tensor[(1, 16, 16, 32), int8] */;
+    %55 = add(%54, %tvm_var_extract_const_9) /* ty=Tensor[(1, 16, 16, 32), int8] */;
+    nn.relu(%55) /* ty=Tensor[(1, 16, 16, 32), int8] */
+  } /* ty=fn (Tensor[(1, 32, 32, 16), int8], Tensor[(32, 3, 3, 16), int8], Tensor[(1, 1, 1, 32), int8]) -> Tensor[(1, 16, 16, 32), int8] */;
+  %56(%esp_4_i0, %esp_func_var_8, %esp_func_var_9) /* ty=Tensor[(1, 16, 16, 32), int8] */
+}
+
+def @tvmgen_default_esp_main_5(%esp_5_i0: Tensor[(1, 16, 16, 32), int8] /* ty=Tensor[(1, 16, 16, 32), int8] */, %esp_func_var_10: Tensor[(32, 3, 3, 32), int8] /* ty=Tensor[(32, 3, 3, 32), int8] */, %esp_func_var_11: Tensor[(1, 1, 1, 32), int8] /* ty=Tensor[(1, 1, 1, 32), int8] */, Compiler="esp", Primitive=1, Inline=1, global_symbol="tvmgen_default_esp_main_5") -> Tensor[(1, 16, 16, 32), int8] {
+  %59 = fn (%FunctionVar_3_0: Tensor[(1, 16, 16, 32), int8] /* ty=Tensor[(1, 16, 16, 32), int8] */, %tvm_var_extract_const_10: Tensor[(32, 3, 3, 32), int8] /* ty=Tensor[(32, 3, 3, 32), int8] */, %tvm_var_extract_const_11: Tensor[(1, 1, 1, 32), int8] /* ty=Tensor[(1, 1, 1, 32), int8] */, PartitionedFromPattern="qnn.conv2d_qnn.requantize_add_", Composite="esp.qnn_conv2d_onnx") -> Tensor[(1, 16, 16, 32), int8] {
+    %57 = qnn.conv2d(%FunctionVar_3_0, %tvm_var_extract_const_10, 0 /* ty=int32 span=QLinearConv_5:0:0 */, 0 /* ty=int32 span=QLinearConv_5:0:0 */, -3f /* ty=float32 */, -7f /* ty=float32 */, padding=[1, 1, 1, 1], channels=32, kernel_size=[3, 3], data_layout="NHWC", kernel_layout="OHWI", out_dtype="int32") /* ty=Tensor[(1, 16, 16, 32), int32] */;
+    %58 = qnn.requantize(%57, 0.000976562f /* ty=float32 span=QLinearConv_5:0:0 */, 0 /* ty=int32 span=QLinearConv_5:0:0 */, -3f /* ty=float32 */, 0 /* ty=int32 span=QLinearConv_5:0:0 */, axis=3, out_dtype="int8") /* ty=Tensor[(1, 16, 16, 32), int8] */;
+    add(%58, %tvm_var_extract_const_11) /* ty=Tensor[(1, 16, 16, 32), int8] */
+  } /* ty=fn (Tensor[(1, 16, 16, 32), int8], Tensor[(32, 3, 3, 32), int8], Tensor[(1, 1, 1, 32), int8]) -> Tensor[(1, 16, 16, 32), int8] */;
+  %59(%esp_5_i0, %esp_func_var_10, %esp_func_var_11) /* ty=Tensor[(1, 16, 16, 32), int8] */
+}
+
+def @tvmgen_default_esp_main_6(%esp_6_i0: Tensor[(1, 16, 16, 32), int8] /* ty=Tensor[(1, 16, 16, 32), int8] */, %esp_func_var_12: Tensor[(64, 1, 1, 32), int8] /* ty=Tensor[(64, 1, 1, 32), int8] */, %esp_func_var_13: Tensor[(1, 1, 1, 64), int8] /* ty=Tensor[(1, 1, 1, 64), int8] */, Compiler="esp", Primitive=1, Inline=1, global_symbol="tvmgen_default_esp_main_6") -> Tensor[(1, 8, 8, 64), int8] {
+  %62 = fn (%FunctionVar_2_0: Tensor[(1, 16, 16, 32), int8] /* ty=Tensor[(1, 16, 16, 32), int8] */, %tvm_var_extract_const_12: Tensor[(64, 1, 1, 32), int8] /* ty=Tensor[(64, 1, 1, 32), int8] */, %tvm_var_extract_const_13: Tensor[(1, 1, 1, 64), int8] /* ty=Tensor[(1, 1, 1, 64), int8] */, PartitionedFromPattern="qnn.conv2d_qnn.requantize_add_", Composite="esp.qnn_conv2d_onnx") -> Tensor[(1, 8, 8, 64), int8] {
+    %60 = qnn.conv2d(%FunctionVar_2_0, %tvm_var_extract_const_12, 0 /* ty=int32 span=QLinearConv_9:0:0 */, 0 /* ty=int32 span=QLinearConv_9:0:0 */, -3f /* ty=float32 */, -7f /* ty=float32 */, strides=[2, 2], padding=[0, 0, 0, 0], channels=64, kernel_size=[1, 1], data_layout="NHWC", kernel_layout="OHWI", out_dtype="int32") /* ty=Tensor[(1, 8, 8, 64), int32] */;
+    %61 = qnn.requantize(%60, 0.000976562f /* ty=float32 span=QLinearConv_9:0:0 */, 0 /* ty=int32 span=QLinearConv_9:0:0 */, -3f /* ty=float32 */, 0 /* ty=int32 span=QLinearConv_9:0:0 */, axis=3, out_dtype="int8") /* ty=Tensor[(1, 8, 8, 64), int8] */;
+    add(%61, %tvm_var_extract_const_13) /* ty=Tensor[(1, 8, 8, 64), int8] */
+  } /* ty=fn (Tensor[(1, 16, 16, 32), int8], Tensor[(64, 1, 1, 32), int8], Tensor[(1, 1, 1, 64), int8]) -> Tensor[(1, 8, 8, 64), int8] */;
+  %62(%esp_6_i0, %esp_func_var_12, %esp_func_var_13) /* ty=Tensor[(1, 8, 8, 64), int8] */
+}
+
+def @tvmgen_default_esp_main_7(%esp_7_i0: Tensor[(1, 16, 16, 32), int8] /* ty=Tensor[(1, 16, 16, 32), int8] */, %esp_func_var_14: Tensor[(64, 3, 3, 32), int8] /* ty=Tensor[(64, 3, 3, 32), int8] */, %esp_func_var_15: Tensor[(1, 1, 1, 64), int8] /* ty=Tensor[(1, 1, 1, 64), int8] */, Compiler="esp", Primitive=1, Inline=1, global_symbol="tvmgen_default_esp_main_7") -> Tensor[(1, 8, 8, 64), int8] {
+  %65 = fn (%FunctionVar_1_0: Tensor[(1, 16, 16, 32), int8] /* ty=Tensor[(1, 16, 16, 32), int8] */, %tvm_var_extract_const_14: Tensor[(64, 3, 3, 32), int8] /* ty=Tensor[(64, 3, 3, 32), int8] */, %tvm_var_extract_const_15: Tensor[(1, 1, 1, 64), int8] /* ty=Tensor[(1, 1, 1, 64), int8] */, PartitionedFromPattern="qnn.conv2d_qnn.requantize_add_", Composite="esp.qnn_conv2d_onnx") -> Tensor[(1, 8, 8, 64), int8] {
+    %63 = qnn.conv2d(%FunctionVar_1_0, %tvm_var_extract_const_14, 0 /* ty=int32 span=QLinearConv_7:0:0 */, 0 /* ty=int32 span=QLinearConv_7:0:0 */, -3f /* ty=float32 */, -9f /* ty=float32 */, strides=[2, 2], padding=[0, 0, 1, 1], channels=64, kernel_size=[3, 3], data_layout="NHWC", kernel_layout="OHWI", out_dtype="int32") /* ty=Tensor[(1, 8, 8, 64), int32] */;
+    %64 = qnn.requantize(%63, 0.000244141f /* ty=float32 span=QLinearConv_7:0:0 */, 0 /* ty=int32 span=QLinearConv_7:0:0 */, -3f /* ty=float32 */, 0 /* ty=int32 span=QLinearConv_7:0:0 */, axis=3, out_dtype="int8") /* ty=Tensor[(1, 8, 8, 64), int8] */;
+    add(%64, %tvm_var_extract_const_15) /* ty=Tensor[(1, 8, 8, 64), int8] */
+  } /* ty=fn (Tensor[(1, 16, 16, 32), int8], Tensor[(64, 3, 3, 32), int8], Tensor[(1, 1, 1, 64), int8]) -> Tensor[(1, 8, 8, 64), int8] */;
+  %65(%esp_7_i0, %esp_func_var_14, %esp_func_var_15) /* ty=Tensor[(1, 8, 8, 64), int8] */
+}
+
+def @tvmgen_default_esp_main_8(%esp_8_i0: Tensor[(1, 8, 8, 64), int8] /* ty=Tensor[(1, 8, 8, 64), int8] */, %esp_func_var_16: Tensor[(64, 3, 3, 64), int8] /* ty=Tensor[(64, 3, 3, 64), int8] */, %esp_func_var_17: Tensor[(1, 1, 1, 64), int8] /* ty=Tensor[(1, 1, 1, 64), int8] */, Compiler="esp", Primitive=1, Inline=1, global_symbol="tvmgen_default_esp_main_8") -> Tensor[(1, 8, 8, 64), int8] {
+  %68 = fn (%FunctionVar_0_0: Tensor[(1, 8, 8, 64), int8] /* ty=Tensor[(1, 8, 8, 64), int8] */, %tvm_var_extract_const_16: Tensor[(64, 3, 3, 64), int8] /* ty=Tensor[(64, 3, 3, 64), int8] */, %tvm_var_extract_const_17: Tensor[(1, 1, 1, 64), int8] /* ty=Tensor[(1, 1, 1, 64), int8] */, PartitionedFromPattern="qnn.conv2d_qnn.requantize_add_", Composite="esp.qnn_conv2d_onnx") -> Tensor[(1, 8, 8, 64), int8] {
+    %66 = qnn.conv2d(%FunctionVar_0_0, %tvm_var_extract_const_16, 0 /* ty=int32 span=QLinearConv_8:0:0 */, 0 /* ty=int32 span=QLinearConv_8:0:0 */, -4f /* ty=float32 */, -6f /* ty=float32 */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3], data_layout="NHWC", kernel_layout="OHWI", out_dtype="int32") /* ty=Tensor[(1, 8, 8, 64), int32] */;
+    %67 = qnn.requantize(%66, 0.000976562f /* ty=float32 span=QLinearConv_8:0:0 */, 0 /* ty=int32 span=QLinearConv_8:0:0 */, -2f /* ty=float32 */, 0 /* ty=int32 span=QLinearConv_8:0:0 */, axis=3, out_dtype="int8") /* ty=Tensor[(1, 8, 8, 64), int8] */;
+    add(%67, %tvm_var_extract_const_17) /* ty=Tensor[(1, 8, 8, 64), int8] */
+  } /* ty=fn (Tensor[(1, 8, 8, 64), int8], Tensor[(64, 3, 3, 64), int8], Tensor[(1, 1, 1, 64), int8]) -> Tensor[(1, 8, 8, 64), int8] */;
+  %68(%esp_8_i0, %esp_func_var_16, %esp_func_var_17) /* ty=Tensor[(1, 8, 8, 64), int8] */
+}
+

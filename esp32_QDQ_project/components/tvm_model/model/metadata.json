@@ -1,0 +1,176 @@
+{
+  "modules": {
+    "default": {
+      "executors": [
+        "aot"
+      ],
+      "export_datetime": "2024-02-02 00:05:20Z",
+      "external_dependencies": [
+        {
+          "short_name": "tvm_standalone_crt",
+          "url": "./runtime",
+          "url_type": "mlf_path",
+          "version_spec": "0.14.dev0"
+        }
+      ],
+      "memory": {
+        "functions": {
+          "main": [
+            {
+              "constants_size_bytes": 310824,
+              "device": 1,
+              "inputs": {
+                "input_1": {
+                  "dtype": "float32",
+                  "size": 12288
+                }
+              },
+              "io_size_bytes": 369232,
+              "outputs": {
+                "output": {
+                  "dtype": "float32",
+                  "size": 40
+                }
+              },
+              "workspace_size_bytes": 205824
+            }
+          ],
+          "operator_functions": [
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_multiply_nn_relu_divide_roun_5cb9b9c4908db7b1__1",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_multiply_add_divide_round_cl_6aaab29e758b926e_",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_multiply_nn_relu_divide_roun_5cb9b9c4908db7b1_",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_multiply_1",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_multiply",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_transpose_divide_round_clip_layout_transform",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_nn_relu_cast_multiply",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_multiply_add_divide_round_cl_b548f82d7712f8a2_",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_multiply_nn_relu_divide_roun_5cb9b9c4908db7b1__2",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_softmax",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_layout_transform_reshape_divide_round_clip",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_avg_pool2d_divide_round_clip_multiply",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_multiply_add_divide_round_cl_6aaab29e758b926e__1",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_dense_pack_add_divide_round_clip_multiply",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "model_name": "default",
+      "style": "full-model",
+      "target": [
+        "c -keys=cpu -model=esp32"
+      ]
+    }
+  },
+  "version": 7
+}

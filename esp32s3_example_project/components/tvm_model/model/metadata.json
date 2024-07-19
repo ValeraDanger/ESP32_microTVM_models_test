@@ -1,0 +1,131 @@
+{
+  "modules": {
+    "default": {
+      "executors": [
+        "aot"
+      ],
+      "export_datetime": "2024-02-01 17:51:05Z",
+      "external_dependencies": [
+        {
+          "short_name": "tvm_standalone_crt",
+          "url": "./runtime",
+          "url_type": "mlf_path",
+          "version_spec": "0.14.dev0"
+        }
+      ],
+      "memory": {
+        "functions": {
+          "main": [
+            {
+              "constants_size_bytes": 78544,
+              "device": 1,
+              "inputs": {
+                "input_1": {
+                  "dtype": "float32",
+                  "size": 12288
+                }
+              },
+              "io_size_bytes": 223760,
+              "outputs": {
+                "output": {
+                  "dtype": "float32",
+                  "size": 40
+                }
+              },
+              "workspace_size_bytes": 49152
+            }
+          ],
+          "operator_functions": [
+            {
+              "function_name": "tvmgen_default_fused_layout_transform_reshape_cast",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_avg_pool2d_divide_round_clip_cast",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_cast_multiply_cast_multiply_add_divide_round_clip_cast_nn_relu_cast_multip_b2ce8dcca7699c27_",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_cast_multiply_cast_multiply_add_divide_round_clip_cast_nn_relu",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_dense_pack_add_cast_multiply_zeros_greater_equal_where_add_righ_467e114bd6595de9_",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_cast_multiply_nn_relu_divide_round_clip_cast",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_cast_multiply_cast_multiply_add_divide_round_clip_multiply_nn_relu_divide__278ba95c92af7616_",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_softmax",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "model_name": "default",
+      "style": "full-model",
+      "target": [
+        "c -keys=cpu -model=esp32"
+      ]
+    }
+  },
+  "version": 7
+}

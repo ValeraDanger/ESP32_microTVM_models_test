@@ -1,0 +1,770 @@
+{
+  "modules": {
+    "default": {
+      "executors": [
+        "aot"
+      ],
+      "export_datetime": "2024-02-02 23:47:47Z",
+      "external_dependencies": [
+        {
+          "short_name": "tvm_standalone_crt",
+          "url": "./runtime",
+          "url_type": "mlf_path",
+          "version_spec": "0.14.dev0"
+        }
+      ],
+      "memory": {
+        "functions": {
+          "main": [
+            {
+              "constants_size_bytes": 9082192,
+              "device": 1,
+              "inputs": {
+                "input": {
+                  "dtype": "float32",
+                  "size": 602112
+                }
+              },
+              "io_size_bytes": 16924640,
+              "outputs": {
+                "output": {
+                  "dtype": "float32",
+                  "size": 4000
+                }
+              },
+              "workspace_size_bytes": 1813968
+            }
+          ],
+          "operator_functions": [
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_13",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__14",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_7",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_concatenate_divide_round_clip_cast_cast_cast_multiply_layout_transform_res_5282196681183f22__2",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_6",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_layout_transform",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_layout_transform_1",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_multiply_layout_transform_concatenate_div_f6434fb90512e0c6__4",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_5",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_max_pool2d_divide_round_clip_cast_cast_cast",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_multiply_layout_transform_concatenate_div_f6434fb90512e0c6__2",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_3",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__10",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_16",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_2",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_1",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_9",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_12",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_multiply_layout_transform_concatenate_div_1994d658f1d82640__2",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__17",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__9",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_12",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_5",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_layout_transform_6",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__13",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__7",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__5",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_17",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_add_clip_cast_cast_subtract_cast_layout_transform",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_1",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_layout_transform_4",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__3",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_13",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_15",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_20",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__16",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_8",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_mean",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__1",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_8",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_layout_transform_2",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_11",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_concatenate_divide_round_clip_cast_cast_cast_multiply_layout_transform_res_5282196681183f22__1",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__12",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_4",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c_",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_6",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_multiply_layout_transform_concatenate_div_f6434fb90512e0c6__3",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_dense_pack_divide_round_add_clip_cast_cast_subtract_cast_multip_75ff9d653223c1d3_",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_4",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_18",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_multiply_layout_transform_concatenate_div_f6434fb90512e0c6__1",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_2",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_concatenate_divide_round_clip_cast_cast_cast_multiply_layout_transform_res_5282196681183f22_",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_14",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_multiply_layout_transform_concatenate_div_1994d658f1d82640__1",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_14",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_10",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__15",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_7",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_multiply_layout_transform_concatenate_div_f6434fb90512e0c6_",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__8",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_10",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_multiply_layout_transform_concatenate_div_1994d658f1d82640_",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_layout_transform",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_3",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_19",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_layout_transform_5",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_layout_transform_1",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__6",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__4",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__11",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_15",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__18",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_depthwise_conv2d_NCHWc_add_divide_round_add_clip_cast_cast_subt_53313e250755e99c__2",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_multiply_11",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_divide_round_clip_cast_cast_cast_layout_transform_3",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            },
+            {
+              "function_name": "tvmgen_default_fused_nn_contrib_conv2d_NCHWc_add_divide_round_clip_cast_cast_cast_9",
+              "workspace": [
+                {
+                  "device": 1,
+                  "workspace_size_bytes": 0
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "model_name": "default",
+      "style": "full-model",
+      "target": [
+        "c -keys=cpu -model=esp32"
+      ]
+    }
+  },
+  "version": 7
+}
